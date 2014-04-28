@@ -1,9 +1,9 @@
-## This utility is used for debuging Parse.com cloud code.
+### This utility is used for debuging Parse.com cloud code.
 
 
 
 ### Problem:
-The code deployed on Parse.com cloud is not available for DEBUG. The only way to "debug" the code is using the "console.log" !! Debuging your code allow you to write and indentify the bug faster !!
+The code deployed on Parse.com cloud is not available for DEBUG. The only way to "debug" the code is using the "console.log" !! Debuging your code allows you to write and identify the bugs faster !!
 
 =====================================================
 
@@ -45,7 +45,7 @@ Demo Setup
 * 4.DEBUG into your IDE or cmd the "main.js" file for "my-parse-project"
 * 5.RUN into your IDE or cmd the "www.js" file for "demo-js" from "demo-js/bin" folder
 * 6.Now your demo server should be up and running
-* 7.Try into your browser "http://localhost:3000"
+* 7.Navigate to "http://localhost:3000"
 * 8.See the Demo section for more details !
 
 Demo
