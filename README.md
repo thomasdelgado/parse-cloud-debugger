@@ -29,7 +29,7 @@ Demo Setup
       var javaScriptKey = "your js key";
       var masterKey = "your master key";
 
-      global.Parse = require("./../../parse-local-cloud").Parse;
+      global.Parse = require("parse-cloud-debugger").Parse;
 
       //init parse modules
       Parse.initialize(appId, javaScriptKey, masterKey);

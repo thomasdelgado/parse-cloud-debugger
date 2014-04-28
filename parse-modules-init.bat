@@ -1,1 +1,1 @@
-npm install mailgun mandrill moment sendgrid stripe twilio underscore
+npm install mailgun mandrill moment sendgrid stripe twilio underscore parse-cloud-debugger
