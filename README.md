@@ -1,18 +1,27 @@
-parse-local-cloud
+## This utility is used for debuging Parse.com cloud code.
+
+
+
+### Problem:
+The code deployed on Parse.com cloud is not available for DEBUG. The only way to "debug" the code is using the "console.log" !! Debuging your code allow you to write and indentify the bug faster !!
+
 =====================================================
-This utility is used for debuging Parse.com cloud code.
 
-Currently the following APIs are available:
+### Solution:
+A local NodeJs server wich is simulating the Parse cloud enviroment and where YOU CAN DEBUG the code.
 
+=====================================================
+
+##### Currently this utility is available for the following Parse APIs:
 * REST API
 * JavaScript API
 
-Project Setup
+Demo Setup
 =====================================================
-* 1.Copy "parse-modules-init.bat" into your parent Parse project and execute it (this bat will install the Parse modules like : mailgun, mandrill, moment, sendgrid, stripe, twilio, underscore )
-* 2.(for demo) Go into "demo-js" and "my-parse-project" and call "npm install"
-* 3.(for demo) For "my-parse-project" copy this code for local debuging 
-    ```javascript
+* 1. Copy "parse-modules-init.bat" into your parent Parse project and execute it (this bat will install the Parse modules like : mailgun, mandrill, moment, sendgrid, stripe, twilio, underscore )
+* 2. Go into "demo-js" and "my-parse-project" and call "npm install"
+* 3. For "my-parse-project" copy this code for local debuging 
+```javascript
 ///////////////////////////////////////////////////////////////////////////
 //REMOVE THIS CODE WHEN YOU DEPLOY TO PARSE SERVER
 (function () {
@@ -22,8 +31,8 @@ Project Setup
 
       global.Parse = require("./../../parse-local-cloud").Parse;
 
-     //init parse modules
-     Parse.initialize(appId, javaScriptKey, masterKey);
+      //init parse modules
+      Parse.initialize(appId, javaScriptKey, masterKey);
 
       //change cloud modules path
       cloudModulesPath = "./";
@@ -31,10 +40,11 @@ Project Setup
 ();
 //END CODE
 ///////////////////////////////////////////////////////////////////////////
-    ```
-* 4.Start into your IDE or cmd the "main.js" file for "my-parse-project"
-* 5.Start into your IDE or cmd the "www.js" file for "demo-js" from "demo-js/bin" folder
-* 6.Now your demo server is up and running
+  ```
+
+* 4.DEBUG into your IDE or cmd the "main.js" file for "my-parse-project"
+* 5.RUN into your IDE or cmd the "www.js" file for "demo-js" from "demo-js/bin" folder
+* 6.Now your demo server should be up and running
 * 7.Try into your browser "http://localhost:3000"
 * 8.See the Demo section for more details !
 
