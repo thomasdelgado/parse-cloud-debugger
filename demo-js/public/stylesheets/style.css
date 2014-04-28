@@ -1,0 +1,33 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.title {
+    color: #005577;
+    font-size: 24px;
+}
+
+button {
+    margin: 5px;
+    width: 200px;
+}
+
+#result1,#result2,#result3,#result4 {
+    margin: 5px;
+    width: 300px;
+}
+
+#parseCalls, #noParseCalls
+{
+    margin: 10px;
+    background-color: #EEE;
+    width: 350px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow:3px 3px 3px #444;
+}

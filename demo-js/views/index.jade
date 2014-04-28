@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h1= title
+    button(type="button")#reset.btn.btn-warning Reset
+    #parseCalls
+        p.title.
+               Real Parse Server
+        #box
+            button(type="button")#b1.btn.btn-primary Call 'helloWorld1'
+            #result1.alert.alert-success
+        #box
+            button(type="button")#b2.btn.btn-primary Call 'helloWorld2'
+            #result2.alert.alert-success
+
+    #noParseCalls
+        p.title.
+                Local Parse Server
+        #box
+            button(type="button")#b3.btn.btn-primary  Call 'helloWorld'
+            #result3.alert.alert-success
+        #box
+            button(type="button")#b4.btn.btn-primary  Call 'helloWorld2'
+            #result4.alert.alert-success
