@@ -78,7 +78,7 @@ Demo
 
 ![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-parse.png?raw=true "Parse calls")
 
-* 3.We're calling the same function on our local Parse cloud ("my-parse-project")
+* 3.We're calling the same function on our local Parse cloud ("parse-cloud-code-demo")
 
 * * We have 2 breakpoint added for "helloWorld2" function at line 29 and 32
 
