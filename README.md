@@ -20,7 +20,7 @@ Demo Setup
 =====================================================
 * 1. Execute "parse-modules-init.bat", which will install Parse modules like : mailgun, mandrill, moment, sendgrid, stripe, twilio, underscore
 * 2. Execute "npm install" in both "demo-js" and "my-parse-project" folders
-* 3. Copy the following code in the "my-parse-project/main.js" file in order to enable local debuging 
+* 3.1. Copy the following code in the "my-parse-project/main.js" file in order to enable local debuging 
 ```javascript
 ///////////////////////////////////////////////////////////////////////////
 //REMOVE THIS CODE WHEN YOU DEPLOY TO PARSE SERVER
@@ -38,6 +38,26 @@ Demo Setup
       cloudModulesPath = "./";
 })
 ();
+//END CODE
+///////////////////////////////////////////////////////////////////////////
+  ```
+
+* 3.2. Copy the following code in the entrypoint js file in order to enable local debuging on client 
+```javascript
+///////////////////////////////////////////////////////////////////////////
+//REMOVE THIS CODE WHEN YOU DEPLOY 
+var runOnParse = false;
+var originalParseFunction = Parse._request;
+
+Parse._request = function (options) {
+    Parse.serverURL = "https://api.parse.com";
+
+    if (runOnParse === false && options.route == "functions") {
+        Parse.serverURL = "http://localhost:5555";
+    }
+
+    return originalParseFunction(options);
+};
 //END CODE
 ///////////////////////////////////////////////////////////////////////////
   ```
