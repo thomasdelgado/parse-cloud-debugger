@@ -1,5 +1,6 @@
 var parseLib = require("./parse.js");
 var Parse = parseLib.Parse;
+var FUNCTION_TIMEOUT = 15;
 
 var oldParseRunFunction = Parse.Cloud.run;
 
@@ -8,23 +9,55 @@ Parse.localFunctions = [];
 Parse.Cloud.run = function (name, data, options) {
     options = options || {};
 
+    //go to real Parse server
     if (options.useParse) {
         oldParseRunFunction(name, data, options);
+        return;
     }
-    else {
-        var callBack = Parse.localFunctions[name];
-        var request = {};
-        var response = {};
 
-        request.body = {};
-        request.params = data;
-        request.user = Parse.User.current();
+    //else call run the function locally
+    var callBack, request, response;
 
-        response.success = options.success;
-        response.error = options.error;
+    callBack = Parse.localFunctions[name];
 
-        callBack(request, response);
+    if (callBack == undefined) {
+        console.log("Unable to run function '" + name + "'. Function is not defined !");
+        return;
     }
+
+    request = {};
+    request.body = {};
+    request.params = data;
+    request.user = Parse.User.current();
+
+    response = {};
+    response.success = options.success;
+    response.error = options.error;
+
+    (function runCallBack() {
+        var functionName = name;
+        var startTime = new Date();
+        var endTime;
+
+        callBack(request, {
+            success: function (data) {
+                endTime = new Date();
+                if ((endTime.getTime() - startTime.getTime()) / 1000 >= FUNCTION_TIMEOUT) {
+                    console.error("Function '" + functionName + "' timeout! ");
+                }
+
+                if (response.success != undefined) {
+                    response.success(data);
+                }
+            },
+            error: function (error) {
+                if (response.error != error) {
+                    response.error(error);
+                }
+            }
+        });
+    })();
+
 }
 
 Parse.Cloud.define = function (functionName, callBack) {
