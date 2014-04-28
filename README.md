@@ -2,7 +2,7 @@ parse-local-cloud
 =====================================================
 This utility is used for debuging Parse.com cloud code.
 
-For the moment is available only for:
+Currently the following APIs are available:
 
 * REST API
 * JavaScript API
