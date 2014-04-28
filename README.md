@@ -77,3 +77,12 @@ Demo
 
 
 ![Overview](https://github.com/mariusciocan/parse-local-cloud/blob/master/demo-js/public/images/demo-loading-local-demo.png?raw=true "Done")
+
+
+### Not supported yet :
+* Parse.Cloud.beforeSave
+* Parse.Cloud.afterSave
+* Parse.Cloud.beforeDelete
+* Parse.Cloud.afterDelete
+* Parse.Cloud.job
+* Parse.cloud.httpRequest
