@@ -18,9 +18,9 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 
 Demo Setup
 =====================================================
-* 1. Execute "parse-modules-init.bat", which will install Parse modules like : mailgun, mandrill, moment, sendgrid, stripe, twilio, underscore
-* 2. Execute "npm install" in both "demo-js" and "my-parse-project" folders
-* 3.1. Copy the following code in the "my-parse-project/main.js" file in order to enable local debuging 
+* 1. Execute "parse-modules-init.bat", which will install Parse modules like : mailgun, mandrill, moment, sendgrid, stripe, twilio, underscore, parse-cloud-debugger
+* 2. Execute "npm install" in both "web-js-demo" and "parse-cloud-code-demo" folders
+* 3.1. Copy the following code in the "parse-cloud-code-demo/main.js" file in order to enable local debuging
 ```javascript
 ///////////////////////////////////////////////////////////////////////////
 //REMOVE THIS CODE WHEN YOU DEPLOY TO PARSE SERVER
@@ -62,21 +62,21 @@ Parse._request = function (options) {
 ///////////////////////////////////////////////////////////////////////////
   ```
 
-* 4.DEBUG into your IDE or cmd the "main.js" file from "my-parse-project"
-* 5.RUN into your IDE or cmd the "www.js" file from "demo-js/bin" folder
+* 4.DEBUG into your IDE or cmd the "main.js" file from "parse-cloud-code-demo"
+* 5.RUN into your IDE or cmd the "www.js" file from "web-js-demo/bin" folder
 * 6.Now your demo server should be up and running
 * 7.Navigate to "http://localhost:3000"
 * 8.See the DEMO section for more details !
 
 Demo
 =====================================================
-* 1.This is the HTML page of the "demo-js" project !
+* 1.This is the HTML page of the "web-js-demo" project !
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/demo-js/public/images/demo-first-screen.png?raw=true "Demo")
+![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-first-screen.png?raw=true "Demo")
 
 * 2.We're calling the code from Parse.com cloud to test it! 
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/demo-js/public/images/demo-loading-parse.png?raw=true "Parse calls")
+![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-parse.png?raw=true "Parse calls")
 
 * 3.We're calling the same function on our local Parse cloud ("my-parse-project")
 
@@ -87,16 +87,16 @@ Demo
 * * The second one(line 32) is on the function exits when return the answer
 
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/demo-js/public/images/demo-loading-local.png?raw=true "Local Parse call")
+![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-local.png?raw=true "Local Parse call")
 
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/demo-js/public/images/demo-loading-local-response.png?raw=true "Local Parse response")
+![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-local-response.png?raw=true "Local Parse response")
 
 
 * 4. We're receiving the answer in browser ! 
 
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/demo-js/public/images/demo-loading-local-demo.png?raw=true "Done")
+![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-local-demo.png?raw=true "Done")
 
 
 ### Not supported yet :
