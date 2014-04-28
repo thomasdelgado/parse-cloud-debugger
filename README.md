@@ -18,7 +18,7 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 
 Demo Setup
 =====================================================
-* 1. Execute "parse-modules-init.bat", which will install Parse modules like : mailgun, mandrill, moment, sendgrid, stripe, twilio, underscore, parse-cloud-debugger
+* 1. Get the files from git !
 * 2. Execute "npm install" in both "web-js-demo" and "parse-cloud-code-demo" folders
 * 3.1. Copy the following code in the "parse-cloud-code-demo/main.js" file in order to enable local debuging
 ```javascript
