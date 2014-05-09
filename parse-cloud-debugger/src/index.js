@@ -60,6 +60,14 @@ Parse.Cloud.run = function (name, data, options) {
 
 }
 
+Parse.Cloud.beforeSave = Parse.Cloud.afterSave = Parse.Cloud.beforeDelete = Parse.Cloud.afterDelete = Parse.Cloud.job = function () {
+    console.log("This function is not available on client !");
+}
+
+Parse.Cloud.httpRequest = function (options) {
+    console.log("This function is not available yet on client !");
+}
+
 Parse.Cloud.define = function (functionName, callBack) {
     Parse.localFunctions[functionName] = callBack;
 }
