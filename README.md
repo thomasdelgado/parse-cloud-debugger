@@ -20,7 +20,8 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 Demo Setup
 =====================================================
 * 1. Get the files from git !
-* 2. Execute "npm install" in both "web-js-demo" and "parse-cloud-code-demo" folders
+* 2.1. [WINDOWS] Execute "npm install" in "web-js-demo" as Administrator
+* 2.2. [LINUX] Execute "sudo npm install --unsafe-perm" in "web-js-demo"
 * 3.1. Copy the following code in the "parse-cloud-code-demo/main.js" file in order to enable local debuging
 ```javascript
 ///////////////////////////////////////////////////////////////////////////
@@ -100,10 +101,9 @@ Demo
 ![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-local-demo.png?raw=true "Done")
 
 
-### Not supported yet :
+### Not supported for local debugging :
 * Parse.Cloud.beforeSave
 * Parse.Cloud.afterSave
 * Parse.Cloud.beforeDelete
 * Parse.Cloud.afterDelete
 * Parse.Cloud.job
-* Parse.cloud.httpRequest

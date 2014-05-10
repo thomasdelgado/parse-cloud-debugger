@@ -7,7 +7,11 @@ var cloudModulesPath = "cloud/";
     var javaScriptKey = "sRbZOLAgzf38sK7DoqKr3R2EJa8Upg7HMMcvr4eR";
     var masterKey = "hdNrcS0umqkopWo3v5hwSO2Cmzs8IMDDacjzT4VJ";
 
-    global.Parse = require("./../../parse-cloud-debugger").Parse;
+    //local module
+    //global.Parse = require("./../../parse-cloud-debugger").Parse;
+
+    //npm module
+    global.Parse = require("parse-cloud-debugger").Parse;
 
     //init parse modules
     Parse.initialize(appId, javaScriptKey, masterKey);

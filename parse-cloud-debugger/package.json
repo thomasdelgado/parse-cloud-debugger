@@ -5,7 +5,7 @@
     "main": "./src/index.js",
     "homepage": "https://github.com/mariusciocan/parse-cloud-debugger",
     "scripts": {
-        "postinstall": "npm install -g mailgun mandrill moment sendgrid stripe twilio underscore"
+        "postinstall": "npm install --unsafe-perm -g mailgun mandrill moment sendgrid stripe twilio underscore"
     },
     "author": {
         "name": "Marius Ciocan",
