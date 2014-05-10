@@ -73,10 +73,12 @@ Parse.Cloud.define = function (functionName, callBack) {
 }
 
 var http = require('http'),
-    express = require('express');
+    express = require('express'),
+    bodyParser = require('body-parser');
+
 var app = express();
 app.set('port', process.env.PORT || 5555);
-app.use(express.bodyParser());
+app.use(bodyParser());
 app.use(app.router);
 
 var reqHandler = function (req, res) {
