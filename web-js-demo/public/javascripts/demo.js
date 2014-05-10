@@ -45,7 +45,8 @@ var elements = [
                         toogleElement("#" + el.resultDiv, true, false, result.message);
                     },
                     error: function (error) {
-                        console.log(error);
+                        toogleElement("#" + el.resultDiv, true, false, "Error !");
+                        console.log(error.message);
                     }
                 });
 
