@@ -21,7 +21,7 @@ Demo Setup
 =====================================================
 * 1. Get the files from git !
 * 2.1. [WINDOWS] Execute "npm install" in "web-js-demo" as Administrator
-* 2.2. [LINUX] Execute "sudo npm install --unsafe-perm" in "web-js-demo"
+* 2.2. [LINUX] Execute "sudo npm install --unsafe-perm" in "web-js-demo" (thanks @pcecchetti)
 * 3.1. Copy the following code in the "parse-cloud-code-demo/main.js" file in order to enable local debuging
 ```javascript
 ///////////////////////////////////////////////////////////////////////////
