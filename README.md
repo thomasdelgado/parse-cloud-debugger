@@ -5,17 +5,20 @@
 ### Problem:
 The code deployed on Parse.com cloud is not available for DEBUG. The only way to "debug" the code is using the "console.log" !! Debuging your code allows you to identify the bugs and code faster !!
 
-=====================================================
-
 ### Solution:
 A local NodeJs server wich is simulating the Parse cloud enviroment and where YOU CAN DEBUG your code.
 
-=====================================================
 
 ##### Currently this utility is available for the following Parse APIs:
 * REST API
 * JavaScript API
 * Android API (work in progress)
+
+Demo Project Structure
+=====================================================
+* 1. parse-cloud-demo - contains all parse js files 
+* 2. web-js-demo - web demo where cloud functions are called on real Parse.com servers and locally (on parse-cloud-demo) 
+* 3. parse-cloud-debbuger - local module of the lib used to enable local debugging of parse cloud code
 
 Demo Setup
 =====================================================
