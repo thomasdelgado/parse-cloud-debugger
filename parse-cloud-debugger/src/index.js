@@ -79,7 +79,7 @@ var http = require('http'),
 var app = express();
 app.set('port', process.env.PORT || 5555);
 app.use(bodyParser());
-app.use(app.router);
+app.use(express.Router());
 
 var reqHandler = function (req, res) {
     var functionName = req.params.functionName;
@@ -104,7 +104,7 @@ app.post('/functions/:functionName', reqHandler);
 app.post('/1/functions/:functionName', reqHandler);
 
 http.createServer(app).listen(app.get('port'), function () {
-    console.log('App Server is now running at:' + app.get('port'));
+    console.log('Local Parse Cloud runnig at localhost:' + app.get('port') + " !!!");
 });
 
 module.exports = parseLib;

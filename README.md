@@ -19,25 +19,16 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 
 Demo Setup
 =====================================================
-* 1. Get the files from git !
-* 2.1. [WINDOWS] Execute "npm install" in "web-js-demo" as Administrator
-* 2.2. [LINUX] Execute "sudo npm install --unsafe-perm" in "web-js-demo" (thanks @pcecchetti)
+* 1. Get the files from git and open the folder!
+* 2.1. [WINDOWS] Execute "npm install" in that folder as Administrator
+* 2.2. [LINUX] Execute "sudo npm install --unsafe-perm" in that folder (thanks @pcecchetti)
 * 3.1. Copy the following code in the "parse-cloud-code-demo/main.js" file in order to enable local debuging
 ```javascript
 ///////////////////////////////////////////////////////////////////////////
 //REMOVE THIS CODE WHEN YOU DEPLOY TO PARSE SERVER
 (function () {
-      var appId = "your app id";
-      var javaScriptKey = "your js key";
-      var masterKey = "your master key";
-
       global.Parse = require("parse-cloud-debugger").Parse;
-
-      //init parse modules
-      Parse.initialize(appId, javaScriptKey, masterKey);
-
-      //change cloud modules path
-      cloudModulesPath = "./";
+      Parse.initialize( "your app id", "your js key", "your master key");
 })
 ();
 //END CODE

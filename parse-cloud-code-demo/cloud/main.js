@@ -3,6 +3,7 @@ var cloudModulesPath = "cloud/";
 ///////////////////////////////////////////////////////////////////////////
 //REMOVE THIS CODE WHEN YOU DEPLOY TO PARSE SERVER
 (function () {
+    // test keys for a real parse demo project wich contains the code from this file
     var appId = "BW59VojYAqo0TOsXw0Y7D7FMNMsZryltFpEdPY4s";
     var javaScriptKey = "sRbZOLAgzf38sK7DoqKr3R2EJa8Upg7HMMcvr4eR";
     var masterKey = "hdNrcS0umqkopWo3v5hwSO2Cmzs8IMDDacjzT4VJ";
