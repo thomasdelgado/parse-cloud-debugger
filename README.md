@@ -59,7 +59,7 @@ Parse._request = function (options) {
   ```
 
 * 4.DEBUG into your IDE or cmd the "main.js" file from "parse-cloud-code-demo"
-* 5.RUN into your IDE or cmd the "www.js" file from "web-js-demo/bin" folder
+* 5.RUN into your IDE or cmd the "demo.js" file from "web-js-demo/bin" folder
 * 6.Now your demo server should be up and running
 * 7.Navigate to "http://localhost:3000"
 * 8.See the DEMO section for more details !
