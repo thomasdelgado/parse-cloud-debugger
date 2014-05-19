@@ -37,3 +37,14 @@ Parse.Cloud.define("helloWorld2", function (request, response) {
         response.success(result);
     });
 });
+
+Parse.Cloud.define("httpRequestExample", function (request, response) {
+    Parse.Cloud.httpRequest({url: "https://www.google.com",
+        success: function (result) {
+            response.success({message: "Request to google.com done !"});
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+});
