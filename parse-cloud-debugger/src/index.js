@@ -119,6 +119,17 @@ Parse.Cloud.job = function (jobName, callBack) {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function rawBody(req, res, next) {
+    req.setEncoding('utf8');
+    req.rawBody = '';
+    req.on('data', function(chunk) {
+        req.rawBody += chunk;
+    });
+    req.on('end', function(){
+        req.body = JSON.parse(req.rawBody);
+        next();
+    });
+}
 
 var http = require('http'),
     express = require('express'),
@@ -127,6 +138,7 @@ var http = require('http'),
 var app = express();
 app.set('port', process.env.PORT || 5555);
 app.use(bodyParser());
+app.use(rawBody);
 app.use(express.Router());
 
 var reqHandler = function (req, res) {
@@ -136,6 +148,8 @@ var reqHandler = function (req, res) {
         Parse.Cloud.run(functionName, req.body, {
             success: function (data) {
                 res.header("Access-Control-Allow-Origin", "*");
+                res.header("Access-Control-Request-Headers", "X-Requested-With, accept, content-type");
+                res.header("Access-Control-Allow-Methods", "GET, POST");
                 res.send({result: data});
             },
             error: function (err) {

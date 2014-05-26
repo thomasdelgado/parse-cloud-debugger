@@ -40,7 +40,7 @@ var elements = [
                 runOnParse = el.runOnParse;
 
                 toogleElement("#" + el.resultDiv, true, true);
-                Parse.Cloud.run(el.functionName, {}, {
+                Parse.Cloud.run(el.functionName, {testData:true}, {
                     success: function (result) {
                         toogleElement("#" + el.resultDiv, true, false, result.message);
                     },
