@@ -100,4 +100,4 @@ Demo
 * Parse.Cloud.afterSave
 * Parse.Cloud.beforeDelete
 * Parse.Cloud.afterDelete
-* Parse.Cloud.job
+
