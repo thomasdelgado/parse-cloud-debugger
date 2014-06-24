@@ -1,6 +1,4 @@
-if (!cloudModulesPath) {
-    cloudModulesPath = "cloud/";
-}
+require("cloud/app.js");
 
 Parse.Cloud.define("helloWorld", function (request, response) {
     response.success({message: "Hello world from Parse !"});
@@ -8,7 +6,7 @@ Parse.Cloud.define("helloWorld", function (request, response) {
 
 
 Parse.Cloud.define("helloWorld2", function (request, response) {
-    var util = require(cloudModulesPath + "util.js");
+    var util = require("cloud/util.js");
 
     util.helloWorld(function (result) {
         response.success(result);

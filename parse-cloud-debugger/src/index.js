@@ -178,34 +178,16 @@ var http = require('http'),
 
 var app = express();
 app.set('port', process.env.PORT || 5555);
-app.use(bodyParser());
+app.use(express.bodyParser());
 app.use(parseRawBody);
-app.use(express.Router());
 
 
 app.post('/:type/:name', reqHandler);
 app.post('/1/:type/:name', reqHandler);
 
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('Local Parse Cloud runnig at localhost:' + app.get('port'));
+var debugServer = app.listen(app.get('port'), function () {
+    console.error('Local Parse Cloud runnig at localhost:' + app.get('port'));
 });
-
-//_____________________________________________________________________________________________________________________//
-
-/*
- Static Server init
- */
-
-Parse.initStaticHttp = function (path) {
-    var wwwServer = express();
-    wwwServer.set('port', process.env.PORT || 3333);
-    wwwServer.use(express.static(path));
-
-    http.createServer(wwwServer).listen(wwwServer.get('port'), function () {
-        console.log('Static server runnig at localhost:' + wwwServer.get('port'));
-    });
-
-}
 
 
 module.exports = parseLib;
