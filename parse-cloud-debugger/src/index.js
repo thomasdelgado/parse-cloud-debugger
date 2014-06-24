@@ -172,11 +172,9 @@ var reqHandler = function (req, res) {
     }
 };
 
-var http = require('http'),
-    express = require('express'),
-    bodyParser = require('body-parser');
-
+var express = require('express');
 var app = express();
+
 app.set('port', process.env.PORT || 5555);
 app.use(express.bodyParser());
 app.use(parseRawBody);

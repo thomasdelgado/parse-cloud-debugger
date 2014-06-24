@@ -16,26 +16,21 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 
 Demo Project Structure
 =====================================================
-* 1. parse-cloud-demo - contains all parse js files 
-* 2. web-js-demo - web demo where cloud functions are called on real Parse.com servers and locally (on parse-cloud-demo) 
-* 3. parse-cloud-debbuger - local module of the lib used to enable local debugging of parse cloud code
+* 1. parse-cloud-demo - contains all parse js files and the files of the presention site
+* 2. parse-cloud-debbuger - local module of the lib used to enable local debugging of parse cloud code
 
 Demo Setup
 =====================================================
 * 1. Get the files from git and open the folder!
 * 2.1. [WINDOWS] Execute "npm install" in that folder as Administrator
 * 2.2. [LINUX] Execute "sudo npm install --unsafe-perm" in that folder (thanks @pcecchetti)
-* 3.1. Copy the following code in the "parse-cloud-code-demo/main.js" file in order to enable local debuging
+* 2.3. Set NODE_PATH env param to your 'parse-cloud-code-demo' folder && DEV env param to 'true'
+* 3.1. In 'parse-cloud-code-demo\startLocalDebugging.js' is the code to start the app in debug mode
 ```javascript
-///////////////////////////////////////////////////////////////////////////
-//REMOVE THIS CODE WHEN YOU DEPLOY TO PARSE SERVER
-(function () {
       global.Parse = require("parse-cloud-debugger").Parse;
       Parse.initialize( "your app id", "your js key", "your master key");
-})
-();
-//END CODE
-///////////////////////////////////////////////////////////////////////////
+      require('./cloud/main.js');
+
   ```
 
 * 3.2. Copy the following code in the entrypoint js file in order to enable local debuging on client 
@@ -58,11 +53,9 @@ Parse._request = function (options) {
 ///////////////////////////////////////////////////////////////////////////
   ```
 
-* 4.DEBUG into your IDE or cmd the "main.js" file from "parse-cloud-code-demo"
-* 5.RUN into your IDE or cmd the "demo.js" file from "web-js-demo/bin" folder
-* 6.Now your demo server should be up and running
-* 7.Navigate to "http://localhost:3000"
-* 8.See the DEMO section for more details !
+* 4.DEBUG into your IDE or cmd the "startLocalDebugging.js" file from "parse-cloud-code-demo"
+* 5.Now your demo server should be up and running at "http://localhost:3000"
+* 6.See the DEMO section for more details !
 
 Demo
 =====================================================
@@ -93,6 +86,12 @@ Demo
 
 
 ![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-local-demo.png?raw=true "Done")
+
+
+Change log
+=====================================================
+0.0.50
+* Support for express added
 
 
 ### Not supported for local debugging :
