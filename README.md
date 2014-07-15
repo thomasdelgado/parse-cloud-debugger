@@ -34,9 +34,9 @@ Demo Setup
 * 2.3. Set NODE_PATH env param to your 'parse-cloud-code-demo' folder && DEV env param to 'true'
 * 3.1. In 'parse-cloud-code-demo\startLocalDebugging.js' is the code to start the app in debug mode
 ```javascript
-      global.Parse = require("parse-cloud-debugger").Parse;
-      Parse.initialize( "your app id", "your js key", "your master key");
-      require('./cloud/main.js');
+global.Parse = require("parse-cloud-debugger").Parse;
+Parse.initialize( "your app id", "your js key", "your master key");
+require('./cloud/main.js');
 
   ```
 
