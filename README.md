@@ -14,6 +14,13 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 * JavaScript API
 * Android API (work in progress)
 
+=====================================================
+
+## Online Demo : http://parse-debugger.parseapp.com
+
+=====================================================
+
+
 Demo Project Structure
 =====================================================
 * 1. parse-cloud-demo - contains all parse js files and the files of the presention site
