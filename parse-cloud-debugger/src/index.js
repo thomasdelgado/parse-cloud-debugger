@@ -1,8 +1,16 @@
+/*
+ Vars && Const
+ */
 var parseLib = require("./parse.js");
 var Parse = parseLib.Parse;
 var FUNCTION_TIMEOUT = 15;
 var JOB_TIMEOUT = 15 * 60;
 
+//_____________________________________________________________________________________________________________________//
+
+/*
+ Parse Setup
+ */
 var oldParseRunFunction = Parse.Cloud.run;
 
 Parse.localFunctions = [];
@@ -118,34 +126,36 @@ Parse.Cloud.job = function (jobName, callBack) {
     Parse.jobs[jobName] = callBack;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function rawBody(req, res, next) {
+
+//_____________________________________________________________________________________________________________________//
+
+/*
+ Local Debugging Server Setup
+ */
+var parseRawBody = function (req, res, next) {
     req.setEncoding('utf8');
     req.rawBody = '';
-    req.on('data', function(chunk) {
+    req.on('data', function (chunk) {
         req.rawBody += chunk;
     });
-    req.on('end', function(){
+    req.on('end', function () {
         req.body = JSON.parse(req.rawBody);
         next();
     });
 }
 
-var http = require('http'),
-    express = require('express'),
-    bodyParser = require('body-parser');
-
-var app = express();
-app.set('port', process.env.PORT || 5555);
-app.use(bodyParser());
-app.use(rawBody);
-app.use(express.Router());
 
 var reqHandler = function (req, res) {
-    var functionName = req.params.functionName;
+    var name = req.params.name;
+    var type = req.params.type;
+    var func = Parse.Cloud.run;
+
+    if (type == 'jobs') {
+        func = Parse.Cloud.runJob;
+    }
 
     try {
-        Parse.Cloud.run(functionName, req.body, {
+        func(name, req.body, {
             success: function (data) {
                 res.header("Access-Control-Allow-Origin", "*");
                 res.header("Access-Control-Request-Headers", "X-Requested-With, accept, content-type");
@@ -162,11 +172,20 @@ var reqHandler = function (req, res) {
     }
 };
 
-app.post('/functions/:functionName', reqHandler);
-app.post('/1/functions/:functionName', reqHandler);
+var express = require('express');
+var app = express();
 
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('Local Parse Cloud runnig at localhost:' + app.get('port') + " !!!");
+app.set('port', process.env.PORT || 5555);
+app.use(express.bodyParser());
+app.use(parseRawBody);
+
+
+app.post('/:type/:name', reqHandler);
+app.post('/1/:type/:name', reqHandler);
+
+var debugServer = app.listen(app.get('port'), function () {
+    console.error('Local Parse Cloud runnig at localhost:' + app.get('port'));
 });
+
 
 module.exports = parseLib;
