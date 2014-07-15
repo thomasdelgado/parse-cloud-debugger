@@ -16,7 +16,7 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 
 =====================================================
 
-## Online Demo : http://parse-debugger.parseapp.com
+## Demo: http://parse-debugger.parseapp.com
 
 =====================================================
 
