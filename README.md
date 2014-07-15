@@ -37,8 +37,7 @@ Demo Setup
 global.Parse = require("parse-cloud-debugger").Parse;
 Parse.initialize( "your app id", "your js key", "your master key");
 require('./cloud/main.js');
-
-  ```
+```
 
 * 3.2. Copy the following code in the entrypoint js file in order to enable local debuging on client 
 ```javascript
