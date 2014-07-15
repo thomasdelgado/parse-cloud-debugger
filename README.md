@@ -68,11 +68,12 @@ Demo
 =====================================================
 * 1.This is the HTML page of the "web-js-demo" project !
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-first-screen.png?raw=true "Demo")
+![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-first-screen.png?raw=true "Demo")
+
 
 * 2.We're calling the code from Parse.com cloud to test it! 
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-parse.png?raw=true "Parse calls")
+![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/imagess/demo-loading-parse.png?raw=true "Parse calls")
 
 * 3.We're calling the same function on our local Parse cloud ("parse-cloud-code-demo")
 
@@ -83,16 +84,16 @@ Demo
 * * The second one(line 32) is on the function exits when return the answer
 
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-local.png?raw=true "Local Parse call")
+![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-local.png?raw=true "Local Parse call")
 
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-local-response.png?raw=true "Local Parse response")
+![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-local-response.png?raw=true "Local Parse response")
 
 
 * 4. We're receiving the answer in browser ! 
 
 
-![Overview](https://github.com/mariusciocan/parse-cloud-debugger/blob/master/web-js-demo/public/images/demo-loading-local-demo.png?raw=true "Done")
+![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-local-demo.png?raw=true "Done")
 
 
 Change log
