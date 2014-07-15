@@ -73,7 +73,7 @@ Demo
 
 * 2.We're calling the code from Parse.com cloud to test it! 
 
-![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/imagess/demo-loading-parse.png?raw=true "Parse calls")
+![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-parse.png?raw=true "Parse calls")
 
 * 3.We're calling the same function on our local Parse cloud ("parse-cloud-code-demo")
 
