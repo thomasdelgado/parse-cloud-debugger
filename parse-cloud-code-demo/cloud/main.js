@@ -23,3 +23,9 @@ Parse.Cloud.define("httpRequestExample", function (request, response) {
         }
     });
 });
+
+
+Parse.Cloud.job("testJOB", function (request, response) {
+    console.log("Test job call success! ");
+});
+

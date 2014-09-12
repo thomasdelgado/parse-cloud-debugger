@@ -15,3 +15,6 @@ Parse.initialize(appId, javaScriptKey, masterKey);
 
 //run cloud code
 require('./cloud/main.js');
+
+//run a test job
+Parse.Cloud.runJob("testJOB");
