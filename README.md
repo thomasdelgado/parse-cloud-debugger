@@ -95,10 +95,6 @@ Demo
 ![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-local-demo.png?raw=true "Done")
 
 
-Change log
-=====================================================
-0.0.50
-* Support for express added
 
 
 ### Not supported for local debugging :
