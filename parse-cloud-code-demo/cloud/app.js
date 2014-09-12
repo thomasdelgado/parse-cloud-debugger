@@ -12,6 +12,7 @@ app.get('/', function (req, res) {
 if (process.env && process.env['DEV']) {
     app.use(express.static(__dirname + '/../public'));
     app.listen(3000);
+    console.log("Try demo at : localhost:3000")
 } else {
     app.listen();
 }

@@ -1,4 +1,37 @@
 /*
+ Simulate Parse restrictions
+ */
+(function () {
+
+    var unsupportedParseFunctions = [
+        {
+            functionName: 'setTimeout',
+            message: "Error : 'setTimeout' is not supported on Parse Cloud ! Use it only locally!"
+        },
+        {
+            functionName: 'setInterval',
+            message: "Error : 'setInterval' is not supported on Parse Cloud ! Use it only locally!"
+        }
+    ];
+
+    var i, len, functionInfo;
+
+    for (i = 0, len = unsupportedParseFunctions.length; i < len; i++) {
+        functionInfo = unsupportedParseFunctions[i];
+        (function () {
+            var functionName = functionInfo.functionName;
+            var message = functionInfo.message;
+            var originalFunction = global[functionName];
+
+            global[functionName] = function () {
+                console.error(message);
+                return originalFunction.apply(this, arguments);
+            }
+        })();
+    }
+})();
+
+/*
  Vars && Const
  */
 var parseLib = require("./parse.js");
@@ -184,7 +217,7 @@ app.post('/:type/:name', reqHandler);
 app.post('/1/:type/:name', reqHandler);
 
 var debugServer = app.listen(app.get('port'), function () {
-    console.error('Local Parse Cloud runnig at localhost:' + app.get('port'));
+    console.error('Local Parse Cloud runnig...');
 });
 
 
