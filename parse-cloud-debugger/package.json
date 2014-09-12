@@ -1,6 +1,6 @@
 {
     "name": "parse-cloud-debugger",
-    "version": "0.0.50",
+    "version": "0.7.1",
     "description": "Local proxy of Parse.com cloud used for debuging cloud code !",
     "main": "./src/index.js",
     "homepage": "https://github.com/mariusciocan/parse-cloud-debugger",
