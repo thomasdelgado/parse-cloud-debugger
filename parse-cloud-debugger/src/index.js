@@ -34,7 +34,7 @@
 /*
  Vars && Const
  */
-var parseLib = require("./parse.js");
+var parseLib = require("./parse-1.3.1.min.js");
 var Parse = parseLib.Parse;
 var FUNCTION_TIMEOUT = 15;
 var JOB_TIMEOUT = 15 * 60;
