@@ -217,7 +217,7 @@ app.post('/:type/:name', reqHandler);
 app.post('/1/:type/:name', reqHandler);
 
 var debugServer = app.listen(app.get('port'), function () {
-    console.error('Local Parse Cloud runnig...');
+    console.error('Local Parse Cloud running...');
 });
 
 
