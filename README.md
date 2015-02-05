@@ -29,8 +29,8 @@ Demo Project Structure
 Demo Setup
 =====================================================
 * 1. Get the files from git and open the folder!
-* 2.1. [WINDOWS] Execute "npm install" in that folder as Administrator
-* 2.2. [LINUX] Execute "sudo npm install --unsafe-perm" in that folder (thanks @pcecchetti)
+* 2.1. [WINDOWS] Execute `npm install` in that folder as Administrator
+* 2.2. [LINUX] Execute `sudo npm install --unsafe-perm` in that folder (thanks @pcecchetti)
 * 2.3. Set NODE_PATH env param to your 'parse-cloud-code-demo' folder && DEV env param to 'true'
 * 3.1. In 'parse-cloud-code-demo\startLocalDebugging.js' is the code to start the app in debug mode
 ```javascript
