@@ -14,11 +14,12 @@ Parse.Cloud.define("helloWorld2", function (request, response) {
 });
 
 Parse.Cloud.define("httpRequestExample", function (request, response) {
-    Parse.Cloud.httpRequest({url: "https://www.google.com",
+    Parse.Cloud.httpRequest({
+        url    : "https://www.google.com",
         success: function (result) {
             response.success({message: "Request to google.com done !"});
         },
-        error: function (error) {
+        error  : function (error) {
             console.log(error);
         }
     });

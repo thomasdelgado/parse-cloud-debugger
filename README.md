@@ -12,7 +12,7 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 ##### Currently this utility is available for the following Parse APIs:
 * REST API
 * JavaScript API
-* Android API (work in progress)
+
 
 =====================================================
 

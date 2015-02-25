@@ -6,7 +6,7 @@ app.set('view engine', 'jade');
 app.set('views', 'cloud/views');
 
 app.get('/', function (req, res) {
-    res.render('index', { title: 'Parse JS Debug Demo' });
+    res.render('index', {title: 'Parse JS Debug Demo'});
 });
 
 if (process.env && process.env['DEV']) {
