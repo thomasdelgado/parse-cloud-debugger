@@ -6,11 +6,11 @@
     var unsupportedParseFunctions = [
         {
             functionName: 'setTimeout',
-            message     : "Error : 'setTimeout' is not supported on Parse Cloud ! Use it only locally!"
+            message: "Error : 'setTimeout' is not supported on Parse Cloud ! Use it only locally!"
         },
         {
             functionName: 'setInterval',
-            message     : "Error : 'setInterval' is not supported on Parse Cloud ! Use it only locally!"
+            message: "Error : 'setInterval' is not supported on Parse Cloud ! Use it only locally!"
         }
     ];
 
@@ -34,7 +34,7 @@
 /*
  Vars && Const
  */
-var parseLib = require("./parse-1.3.5.min.js");
+var parseLib = require("./parse-1.4.2");
 var Parse = parseLib.Parse;
 var FUNCTION_TIMEOUT = 15;
 var JOB_TIMEOUT = 15 * 60;
@@ -84,7 +84,7 @@ var runFunction = function (callBack, name, timeout, data, options) {
                     response.success(data);
                 }
             },
-            error  : function (error) {
+            error: function (error) {
                 if (response.error != undefined) {
                     response.error(error);
                 }
@@ -119,21 +119,21 @@ Parse.Cloud.httpRequest = function (options) {
     var request = require('request');
 
     var requestOptions = {
-        "url"    : options.url,
+        "url": options.url,
         "headers": options.headers || {},
-        "body"   : options.body || {},
-        "params" : options.params || {},
-        "method" : options.method || "GET"
+        "body": options.body || {},
+        "params": options.params || {},
+        "method": options.method || "GET"
     };
 
     var callback = function (error, response, body) {
         var result = {
             "headers": response.headers,
-            "text"   : body,
-            "status" : response.statusCode,
+            "text": body,
+            "status": response.statusCode,
             "cookies": {},
-            "data"   : {},
-            "buffer" : {}
+            "data": {},
+            "buffer": {}
         };
 
         options = options || {};
@@ -195,7 +195,7 @@ var reqHandler = function (req, res) {
                 res.header("Access-Control-Allow-Methods", "GET, POST");
                 res.send({result: data});
             },
-            error  : function (err) {
+            error: function (err) {
                 res.send(err);
             }
         });
