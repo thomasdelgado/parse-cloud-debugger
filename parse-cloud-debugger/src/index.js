@@ -34,13 +34,17 @@
 /*
  Vars && Const
  */
-var parseLib = require("./parse-1.4.2");
+global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+global.localStorage = require('localStorage');
+
+var parseLib = require("./../lib/parse-1.6.2.js");
 var Parse = parseLib.Parse;
 var FUNCTION_TIMEOUT = 15;
 var JOB_TIMEOUT = 15 * 60;
 var __private_session_token = null;
 
 //_____________________________________________________________________________________________________________________//
+
 
 /*
  Parse Setup
@@ -178,13 +182,10 @@ var parseRawBody = function (req, res, next) {
     });
 };
 
-function executeFunc (req, res, func, name) {
+function executeFunc(req, res, func, name) {
     try {
         func(name, req.body, {
             success: function (data) {
-                res.header("Access-Control-Allow-Origin", "*");
-                res.header("Access-Control-Request-Headers", "X-Requested-With, accept, content-type");
-                res.header("Access-Control-Allow-Methods", "GET, POST");
                 res.send({result: data});
             },
             error: function (err) {
@@ -206,10 +207,13 @@ var reqHandler = function (req, res) {
         func = Parse.Cloud.runJob;
     }
 
-    if (req.body._SessionToken && !__private_session_token) {
+    //res.header("Access-Control-Allow-Origin", "*");
+    //res.header("Access-Control-Request-Headers", "X-Requested-With, accept, content-type");
+    //res.header("Access-Control-Allow-Methods", "GET, POST");
 
+    if (req.body._SessionToken && !__private_session_token) {
         __private_session_token = req.body._SessionToken;
-        Parse.User.become(__private_session_token).then (function () {
+        Parse.User.become(__private_session_token).then(function () {
             executeFunc(req, res, func, name);
         }, function (err) {
             res.send(err);
@@ -222,9 +226,11 @@ var reqHandler = function (req, res) {
 };
 
 var express = require('express');
-var app = express();
+var cors = require('cors');
 
+var app = express();
 app.set('port', process.env.PORT || 5555);
+app.use(cors());
 app.use(express.bodyParser());
 app.use(parseRawBody);
 
