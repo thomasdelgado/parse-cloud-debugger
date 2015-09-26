@@ -38,6 +38,7 @@ var parseLib = require("./parse-1.4.2");
 var Parse = parseLib.Parse;
 var FUNCTION_TIMEOUT = 15;
 var JOB_TIMEOUT = 15 * 60;
+var __private_session_token = null;
 
 //_____________________________________________________________________________________________________________________//
 
@@ -92,7 +93,7 @@ var runFunction = function (callBack, name, timeout, data, options) {
         });
     })();
 
-}
+};
 
 Parse.Cloud.run = function (name, data, options) {
     //go to real Parse server
@@ -103,17 +104,17 @@ Parse.Cloud.run = function (name, data, options) {
 
     //else call run the function locally
     runFunction(Parse.localFunctions[name], name, FUNCTION_TIMEOUT, data, options);
-}
+};
 
 
 Parse.Cloud.runJob = function (name, data, options) {
     //helper function to run run jobs locally
     runFunction(Parse.jobs[name], name, JOB_TIMEOUT, data, options);
-}
+};
 
 Parse.Cloud.beforeSave = Parse.Cloud.afterSave = Parse.Cloud.beforeDelete = Parse.Cloud.afterDelete = function () {
     console.log("This function is not available on client !");
-}
+};
 
 Parse.Cloud.httpRequest = function (options) {
     var request = require('request');
@@ -146,18 +147,18 @@ Parse.Cloud.httpRequest = function (options) {
         if (options.success != undefined) {
             options.success(result);
         }
-    }
+    };
 
     request(options, callback);
-}
+};
 
 Parse.Cloud.define = function (functionName, callBack) {
     Parse.localFunctions[functionName] = callBack;
-}
+};
 
 Parse.Cloud.job = function (jobName, callBack) {
     Parse.jobs[jobName] = callBack;
-}
+};
 
 
 //_____________________________________________________________________________________________________________________//
@@ -175,18 +176,9 @@ var parseRawBody = function (req, res, next) {
         req.body = JSON.parse(req.rawBody);
         next();
     });
-}
+};
 
-
-var reqHandler = function (req, res) {
-    var name = req.params.name;
-    var type = req.params.type;
-    var func = Parse.Cloud.run;
-
-    if (type == 'jobs') {
-        func = Parse.Cloud.runJob;
-    }
-
+function executeFunc (req, res, func, name) {
     try {
         func(name, req.body, {
             success: function (data) {
@@ -202,6 +194,30 @@ var reqHandler = function (req, res) {
     }
     catch (e) {
         res.send(e);
+    }
+}
+
+var reqHandler = function (req, res) {
+    var name = req.params.name;
+    var type = req.params.type;
+    var func = Parse.Cloud.run;
+
+    if (type == 'jobs') {
+        func = Parse.Cloud.runJob;
+    }
+
+    if (req.body._SessionToken && !__private_session_token) {
+
+        __private_session_token = req.body._SessionToken;
+        Parse.User.become(__private_session_token).then (function () {
+            executeFunc(req, res, func, name);
+        }, function (err) {
+            res.send(err);
+        });
+
+    }
+    else {
+        executeFunc(req, res, func, name);
     }
 };
 
