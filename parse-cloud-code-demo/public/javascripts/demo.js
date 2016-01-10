@@ -1,17 +1,4 @@
-Parse.initialize("BW59VojYAqo0TOsXw0Y7D7FMNMsZryltFpEdPY4s", "sRbZOLAgzf38sK7DoqKr3R2EJa8Upg7HMMcvr4eR");
-
-var runOnParse = false;
-var originalParseFunction = Parse._request;
-
-Parse._request = function (options) {
-    Parse.serverURL = "https://api.parse.com";
-
-    if (runOnParse === false && options.route == "functions") {
-        Parse.serverURL = "http://localhost:5555";
-    }
-
-    return originalParseFunction(options);
-};
+Parse.initialize("K3vXmzunZTQpinkZX2TbEKRCKa3sImZnp0EYTVv7", "ykpUBkKa7mN6pyF4eXEAX6zAvUt8trcfjqpivioA");
 
 var elements = [
     {button: "b1", functionName: "helloWorld", resultDiv: "result1", runOnParse: true},
@@ -37,10 +24,12 @@ var elements = [
         (function () {
             var el = e;
             $("#" + el.button).click(function () {
-                runOnParse = el.runOnParse;
 
-                toogleElement("#" + el.resultDiv, true, true);
-                Parse.Cloud.run(el.functionName, {testData:true}, {
+                Parse.serverURL = el.runOnParse?"https://api.parse.com/1":"http://localhost:5555";
+
+
+                toogleElement("#" + el.resultDiv, true, true,'please wait..');
+                Parse.Cloud.run(el.functionName, {testData: true}, {
                     success: function (result) {
                         toogleElement("#" + el.resultDiv, true, false, result.message);
                     },
@@ -57,7 +46,21 @@ var elements = [
     }
 })();
 
+function userLogIn(){
+    toogleElement("#resultUser",true,true,'logging user..');
+    Parse.User.logIn("test", "test1234", {
+        success: function(user) {
+            toogleElement("#resultUser",true,false,"User logged in!");
+        },
+        error: function(user, error) {
+            toogleElement("#resultUser",true,true,"User not logged in!");
+        }
+    });
+}
+
 function reset() {
+    userLogIn();
+
     for (var i = 0; i < elements.length; i++) {
         toogleElement("#" + elements[i].resultDiv, false);
     }
@@ -67,7 +70,6 @@ function toogleElement(elementId, show, loading, text) {
     if (show) {
         $(elementId).show();
         if (loading) {
-            text = "please wait..";
             $(elementId).removeClass("alert-success");
             $(elementId).addClass("alert-warning");
         }

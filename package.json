@@ -13,7 +13,6 @@
     "mandrill": "^0.1.0",
     "moment": "^2.6.0",
     "morgan": "~1.0.0",
-    "parse-cloud-debugger": "^0.8.1",
     "request": "^2.64.0",
     "sendgrid": "^1.0.3",
     "stripe": "^2.5.2",

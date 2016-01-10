@@ -6,6 +6,7 @@ Parse.Cloud.define("helloWorld", function (request, response) {
 
 
 Parse.Cloud.define("helloWorld2", function (request, response) {
+    //call 'helloWorld' method from 'util.js' file
     var util = require("cloud/util.js");
 
     util.helloWorld(function (result) {

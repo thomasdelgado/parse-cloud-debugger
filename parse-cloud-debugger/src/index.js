@@ -37,7 +37,7 @@
 global.XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 global.localStorage = require('localStorage');
 
-var parseLib = require("./../lib/parse-1.6.2.js");
+var parseLib = require("./../lib/parse-1.6.14.js");
 var Parse = parseLib.Parse;
 var FUNCTION_TIMEOUT = 15;
 var JOB_TIMEOUT = 15 * 60;
@@ -177,10 +177,18 @@ var parseRawBody = function (req, res, next) {
         req.rawBody += chunk;
     });
     req.on('end', function () {
-        req.body = JSON.parse(req.rawBody);
+        var result=null;
+        try{
+            result=JSON.parse(req.rawBody);
+        }
+        catch (e){
+            result={};
+        }
+        req.body = result;
         next();
     });
 };
+
 
 function executeFunc(req, res, func, name) {
     try {
@@ -207,11 +215,12 @@ var reqHandler = function (req, res) {
         func = Parse.Cloud.runJob;
     }
 
-    //res.header("Access-Control-Allow-Origin", "*");
-    //res.header("Access-Control-Request-Headers", "X-Requested-With, accept, content-type");
-    //res.header("Access-Control-Allow-Methods", "GET, POST");
+    res.header("Access-Control-Request-Headers", "X-Requested-With, accept, content-type");
+    res.header("Access-Control-Allow-Methods", "GET, POST");
 
-    if (req.body._SessionToken && !__private_session_token) {
+    var sessionToken = req.body._SessionToken || req.headers['x-parse-session-token'];
+    if (sessionToken && !__private_session_token) {
+        Parse.User.enableUnsafeCurrentUser();
         __private_session_token = req.body._SessionToken;
         Parse.User.become(__private_session_token).then(function () {
             executeFunc(req, res, func, name);
@@ -239,7 +248,7 @@ app.post('/:type/:name', reqHandler);
 app.post('/1/:type/:name', reqHandler);
 
 var debugServer = app.listen(app.get('port'), function () {
-    console.error('Local Parse Cloud running at port ' + app.get('port') + '...');
+    console.log('Local Parse Cloud running at http://localhost:' + app.get('port')+' .Use this link for API calls.');
 });
 
 

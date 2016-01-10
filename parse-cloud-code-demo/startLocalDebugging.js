@@ -1,8 +1,7 @@
 //test keys
 //change these with your app keys
-var appId = "BW59VojYAqo0TOsXw0Y7D7FMNMsZryltFpEdPY4s";
-var javaScriptKey = "sRbZOLAgzf38sK7DoqKr3R2EJa8Upg7HMMcvr4eR";
-var masterKey = "hdNrcS0umqkopWo3v5hwSO2Cmzs8IMDDacjzT4VJ";
+var appId = "K3vXmzunZTQpinkZX2TbEKRCKa3sImZnp0EYTVv7";
+var javaScriptKey = "ykpUBkKa7mN6pyF4eXEAX6zAvUt8trcfjqpivioA";
 
 //local module
 global.Parse = require("./../parse-cloud-debugger").Parse;
@@ -11,10 +10,12 @@ global.Parse = require("./../parse-cloud-debugger").Parse;
 //global.Parse = require("parse-cloud-debugger").Parse;
 
 //init parse modules
-Parse.initialize(appId, javaScriptKey, masterKey);
+Parse.initialize(appId, javaScriptKey);
 
-//run cloud code
-require('./cloud/main.js');
+process.nextTick(function () {
+   //run cloud code
+    require('./cloud/main.js');
 
-//run a test job
-Parse.Cloud.runJob("testJOB");
+   //run a test job
+    Parse.Cloud.runJob("testJOB");
+});

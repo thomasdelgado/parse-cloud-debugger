@@ -16,7 +16,7 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 
 =====================================================
 
-## Demo: http://parse-debugger.parseapp.com
+## Demo: http:// parse-cloud-debbuger.parseapp.com
 
 =====================================================
 
@@ -30,71 +30,21 @@ Demo Setup
 =====================================================
 * 1. Get the files from git and open the folder!
 * 2.1. [WINDOWS] Execute `npm install` in that folder as Administrator
-* 2.2. [LINUX] Execute `sudo npm install --unsafe-perm` in that folder (thanks @pcecchetti)
-* 2.3. Set NODE_PATH env param to your 'parse-cloud-code-demo' folder && DEV env param to 'true'
-* 3.1. In 'parse-cloud-code-demo\startLocalDebugging.js' is the code to start the app in debug mode
-```javascript
-global.Parse = require("parse-cloud-debugger").Parse;
-Parse.initialize( "your app id", "your js key", "your master key");
-require('./cloud/main.js');
-```
-
-* 3.2. Copy the following code in the entrypoint js file in order to enable local debuging on client 
-```javascript
-///////////////////////////////////////////////////////////////////////////
-//REMOVE THIS CODE WHEN YOU DEPLOY 
-var runOnParse = false;
-var originalParseFunction = Parse._request;
-
-Parse._request = function (options) {
-    Parse.serverURL = "https://api.parse.com";
-
-    if (runOnParse === false && options.route == "functions") {
-        Parse.serverURL = "http://localhost:5555";
-    }
-
-    return originalParseFunction(options);
-};
-//END CODE
-///////////////////////////////////////////////////////////////////////////
-  ```
-
-* 4.DEBUG into your IDE or cmd the "startLocalDebugging.js" file from "parse-cloud-code-demo"
-* 5.Now your demo server should be up and running at "http://localhost:3000"
-* 6.See the DEMO section for more details !
+* 2.2. [LINUX] Execute `sudo npm install --unsafe-perm` in that folder
+* 2.3. **Set NODE_PATH env param to your 'parse-cloud-code-demo' folder && DEV env param to 'true'**
+* 3.DEBUG into your IDE or cmd the "startLocalDebugging.js" file from "parse-cloud-code-demo"
+* 4.Now your demo server should be up and running at "http://localhost:3000"
+* 5.See the DEMO section for more details !
 
 Demo
 =====================================================
-* 1.This is the HTML page of the "web-js-demo" project !
+* 1.This is the HTML page of the "parse-cloud-demo" project: ** http:// parse-cloud-debbuger.parseapp.com **
+* 2.We're calling the same function on our local Parse cloud ("parse-cloud-code-demo")
 
-![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-first-screen.png?raw=true "Demo")
-
-
-* 2.We're calling the code from Parse.com cloud to test it! 
-
-![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-parse.png?raw=true "Parse calls")
-
-* 3.We're calling the same function on our local Parse cloud ("parse-cloud-code-demo")
-
-* * We have 2 breakpoint added for "helloWorld2" function at line 29 and 32
-
-* * The first one(line 29) is on the function entrypoint
-
-* * The second one(line 32) is on the function exits when return the answer
+* * We have a breakpoint added for "helloWorld2" function at line 10 where we can access data sent from browser
 
 
-![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-local.png?raw=true "Local Parse call")
-
-
-![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-local-response.png?raw=true "Local Parse response")
-
-
-* 4. We're receiving the answer in browser ! 
-
-
-![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/demo-loading-local-demo.png?raw=true "Done")
-
-
+![Overview](https://raw.githubusercontent.com/mariusciocan/parse-cloud-debugger/master/parse-cloud-code-demo/public/images/breakpoint.jpg?raw=true "Local Parse call")
 
 
 ### Not supported for local debugging :
