@@ -16,7 +16,7 @@ A local NodeJs server wich is simulating the Parse cloud enviroment and where YO
 
 =====================================================
 
-## Demo: http:// parse-cloud-debbuger.parseapp.com
+## Demo: [http:// parse-cloud-debbuger.parseapp.com](http:// parse-cloud-debbuger.parseapp.com)
 
 =====================================================
 
@@ -38,7 +38,7 @@ Demo Setup
 
 Demo
 =====================================================
-* 1.This is the HTML page of the "parse-cloud-demo" project: ** http:// parse-cloud-debbuger.parseapp.com **
+* 1.This is the HTML page of the "parse-cloud-demo" project:  [ http:// parse-cloud-debbuger.parseapp.com ](http:// parse-cloud-debbuger.parseapp.com)
 * 2.We're calling the same function on our local Parse cloud ("parse-cloud-code-demo")
 
 * * We have a breakpoint added for "helloWorld2" function at line 10 where we can access data sent from browser
