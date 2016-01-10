@@ -59,6 +59,9 @@ function userLogIn(){
 }
 
 function reset() {
+
+    Parse.serverURL ="https://api.parse.com/1";
+
     userLogIn();
 
     for (var i = 0; i < elements.length; i++) {
